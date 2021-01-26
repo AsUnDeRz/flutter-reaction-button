@@ -61,12 +61,12 @@ class _ItemState extends State<Item> with AutomaticKeepAliveClientMixin {
                     width: MediaQuery.of(context).size.width * .2,
                     child: FittedBox(
                       child: FlutterReactionButtonCheck(
+                        boxDuration: Duration(milliseconds: 1),
                         onReactionChanged: (reaction, index, isChecked) {
                           print('reaction selected index: $index');
                         },
                         reactions: widget.reactions,
                         initialReaction: Example.defaultInitialReaction,
-                        selectedReaction: widget.reactions[1],
                       ),
                     ),
                   ),
@@ -82,8 +82,7 @@ class _ItemState extends State<Item> with AutomaticKeepAliveClientMixin {
                         const SizedBox(width: 5),
                         Text(
                           'Comment',
-                          style:
-                              TextStyle(fontSize: 17, color: Colors.grey[600]),
+                          style: TextStyle(fontSize: 17, color: Colors.grey[600]),
                         ),
                       ],
                     ),
@@ -106,8 +105,7 @@ class _ItemState extends State<Item> with AutomaticKeepAliveClientMixin {
                         const SizedBox(width: 5),
                         Text(
                           'Share',
-                          style:
-                              TextStyle(fontSize: 17, color: Colors.grey[600]),
+                          style: TextStyle(fontSize: 17, color: Colors.grey[600]),
                         ),
                       ],
                     ),

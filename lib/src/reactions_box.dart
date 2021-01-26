@@ -40,7 +40,7 @@ class ReactionsBox extends StatefulWidget {
     this.color = Colors.white,
     this.elevation = 5,
     this.radius = 50,
-    this.duration = const Duration(milliseconds: 200),
+    this.duration = const Duration(milliseconds: 1),
     this.highlightColor,
     this.splashColor,
     this.alignment = Alignment.center,
@@ -55,8 +55,7 @@ class ReactionsBox extends StatefulWidget {
   _ReactionsBoxState createState() => _ReactionsBoxState();
 }
 
-class _ReactionsBoxState extends State<ReactionsBox>
-    with TickerProviderStateMixin {
+class _ReactionsBoxState extends State<ReactionsBox> with TickerProviderStateMixin {
   AnimationController _scaleController;
 
   Animation<double> _scaleAnimation;
@@ -69,8 +68,7 @@ class _ReactionsBoxState extends State<ReactionsBox>
   void initState() {
     super.initState();
 
-    _scaleController =
-        AnimationController(vsync: this, duration: widget.duration);
+    _scaleController = AnimationController(vsync: this, duration: widget.duration);
 
     final Tween<double> startTween = Tween(begin: 0, end: 1);
     _scaleAnimation = startTween.animate(_scaleController)
@@ -80,8 +78,7 @@ class _ReactionsBoxState extends State<ReactionsBox>
         });
       })
       ..addStatusListener((status) {
-        if (status == AnimationStatus.reverse)
-          Navigator.of(context).pop(_selectedReaction);
+        if (status == AnimationStatus.reverse) Navigator.of(context).pop(_selectedReaction);
       });
 
     _scaleController.forward();
@@ -143,16 +140,13 @@ class _ReactionsBoxState extends State<ReactionsBox>
   double _getPosition(BuildContext context) =>
       (_getTopPosition() - widget.buttonSize.height * 2 < 0)
           ? _getBottomPosition()
-          : (_getBottomPosition() + widget.buttonSize.height * 2 >
-                  context.screenSize.height)
+          : (_getBottomPosition() + widget.buttonSize.height * 2 > context.screenSize.height)
               ? _getTopPosition()
               : widget.position == Position.TOP
                   ? _getTopPosition()
                   : _getBottomPosition();
 
-  double _getTopPosition() =>
-      widget.buttonOffset.dy - widget.buttonSize.height * 3.3;
+  double _getTopPosition() => widget.buttonOffset.dy - widget.buttonSize.height * 3.3;
 
-  double _getBottomPosition() =>
-      widget.buttonOffset.dy + widget.buttonSize.height;
+  double _getBottomPosition() => widget.buttonOffset.dy + widget.buttonSize.height;
 }

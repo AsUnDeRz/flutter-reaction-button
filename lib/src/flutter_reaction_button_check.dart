@@ -70,15 +70,13 @@ class FlutterReactionButtonCheck extends StatefulWidget {
         super(key: key);
 
   @override
-  _FlutterReactionButtonCheckState createState() =>
-      _FlutterReactionButtonCheckState();
+  _FlutterReactionButtonCheckState createState() => _FlutterReactionButtonCheckState();
 }
 
-class _FlutterReactionButtonCheckState
-    extends State<FlutterReactionButtonCheck> {
+class _FlutterReactionButtonCheckState extends State<FlutterReactionButtonCheck> {
   final GlobalKey _buttonKey = GlobalKey();
 
-  final int _maxTick = 2;
+  final int _maxTick = 1;
 
   Timer _timer;
 
@@ -88,8 +86,7 @@ class _FlutterReactionButtonCheckState
 
   void _init() {
     _isChecked = widget.isChecked;
-    _selectedReaction =
-        _isChecked ? widget.selectedReaction : widget.initialReaction;
+    _selectedReaction = _isChecked ? widget.selectedReaction : widget.initialReaction;
   }
 
   @override
@@ -110,7 +107,7 @@ class _FlutterReactionButtonCheckState
         highlightColor: widget.highlightColor,
         splashColor: widget.splashColor,
         onTap: () {
-          _onClickReactionButton();
+          _onTapReactionButton(context);
         },
         onLongPress: () {
           _onTapReactionButton(context);
@@ -131,9 +128,7 @@ class _FlutterReactionButtonCheckState
   void _onClickReactionButton() {
     _isChecked = !_isChecked;
     _updateReaction(
-      _isChecked
-          ? widget.selectedReaction ?? widget.reactions[0]
-          : widget.initialReaction,
+      _isChecked ? widget.selectedReaction ?? widget.reactions[0] : widget.initialReaction,
     );
   }
 
@@ -166,8 +161,7 @@ class _FlutterReactionButtonCheckState
   }
 
   void _updateReaction(Reaction reaction, [bool isSelectedFromDialog = false]) {
-    _isChecked =
-        isSelectedFromDialog ? true : reaction != widget.initialReaction;
+    _isChecked = isSelectedFromDialog ? true : reaction != widget.initialReaction;
     widget.onReactionChanged?.call(
       reaction,
       widget.reactions.indexOf(reaction),
