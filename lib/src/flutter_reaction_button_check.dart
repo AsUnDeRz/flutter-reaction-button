@@ -111,7 +111,8 @@ class _FlutterReactionButtonCheckState extends State<FlutterReactionButtonCheck>
           // _onTapReactionButton(context);
         },
         onLongPress: () {
-          _onTapReactionButton(context);
+          _showReactionButtons(context);
+          // _onTapReactionButton(context);
         },
         child: (_selectedReaction ?? widget.reactions[0]).icon,
       );
@@ -139,7 +140,7 @@ class _FlutterReactionButtonCheckState extends State<FlutterReactionButtonCheck>
     final reactionButton = await Navigator.of(context).push(
       PageRouteBuilder(
         opaque: false,
-        transitionDuration: const Duration(milliseconds: 200),
+        transitionDuration: const Duration(milliseconds: 1),
         pageBuilder: (_, __, ___) => ReactionsBox(
           buttonOffset: buttonOffset,
           buttonSize: buttonSize,
