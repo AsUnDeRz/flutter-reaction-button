@@ -107,7 +107,8 @@ class _FlutterReactionButtonCheckState extends State<FlutterReactionButtonCheck>
         highlightColor: widget.highlightColor,
         splashColor: widget.splashColor,
         onTap: () {
-          _onTapReactionButton(context);
+          _onClickReactionButton();
+          // _onTapReactionButton(context);
         },
         onLongPress: () {
           _onTapReactionButton(context);
